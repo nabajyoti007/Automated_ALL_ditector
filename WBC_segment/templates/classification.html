@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Leukemia Detector</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}">
+            </div>
+            <div class="title-container">
+                <p class="title">ALL Classification</p>
+            </div>
+            <div class="navbar-links">
+                <a href="/index">Segmentation</a>
+                <a href="/classification">Classification</a>
+                <a href="/home">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <form action="/classification" method="post" enctype="multipart/form-data">
+            <label for="image">Choose an image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if classified_image %}
+            <div id="c_result-container">
+                <div>
+                    <p><strong>Classified Image</strong></p>
+                    <img src="{{ classified_image }}" alt="Classified Image">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

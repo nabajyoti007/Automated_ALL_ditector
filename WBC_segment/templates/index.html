@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Leukemia Detector</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}">
+            </div>
+            <div class="title-container">
+                <p class="title">WBC Segmentation</p>
+            </div>
+            <div class="navbar-links">
+                <a href="/index">Segmentation</a>
+                <a href="/classification">Classification</a>
+                <a href="/home">About</a>
+                <!-- Add more links as needed -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label for="image">Choose an image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if original_image %}
+            <div id="result-container">
+                <div>
+                    <p><strong>Original Image</strong></p>
+                    <img src="{{ original_image }}" alt="Original Image">
+                </div>
+                <div>
+                    <p><strong>Segmented Image</strong></p>
+                    <img src="{{ segmented_image }}" alt="Segmented Image">
+                </div>
+            </div>
+            
+            {% if num_cells is not none %}
+            <div id="num-cell">
+                <p>Total number of cells (Detected): {{ num_cells }}</p>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>

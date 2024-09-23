@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Leukemia Detector</title>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.jpeg') }}">
+            </div>
+            <div class="title-container">
+                <p class="title">About Leukemia</p>
+            </div>
+            <div class="navbar-links">
+                <a href="/index">Segmentation</a>
+                <a href="/classification">Classification</a>
+                <a href="/home">About</a>
+                <!-- Add more links as needed -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="h_container">
+        <div class="text">
+            <h1>Leukemia</h1>
+            <p>Leukemia, also spelled as leukaemia, is a type of blood cancer that occurs when there is a rapid growth of abnormal white blood cells in the bone marrow.
+
+                This condition involves white blood cells, which are an important part of the immune system that fight infections. Leukemia happens when abnormalities cause the bone marrow to make immature white blood cells (leukemic cells) that outnumber and crowd out the healthy cells.
+                
+                Leukemia can be either acute (worsens quickly) or chronic (worsens slowly).</p>
+        </div>
+        <div class="image">
+            <img src="{{ url_for('static', filename='leu.png') }}" alt="Leukemia">
+        </div>
+    </div>
+</body>
+</html>
